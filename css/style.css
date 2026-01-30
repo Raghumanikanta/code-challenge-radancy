@@ -32,11 +32,24 @@
 	 height: 100%;
 	 object-fit: cover;
 }
- .hero__overlay {
-	 width: 40%;
-	 background: #2f7d6a;
-	 transform: skewX(-12deg);
-	 margin-left: -80px;
+ .hero__image {
+	 width: 60%;
+}
+ .hero__image img {
+	 width: 102%;
+	 height: 100%;
+	 object-fit: cover;
+}
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56%;
+  height: 100%;
+  background: #2f7d6a;
+
+  /* key part */
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
 }
 /* Intro */
  .intro {
