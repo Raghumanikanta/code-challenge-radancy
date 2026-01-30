@@ -85,6 +85,12 @@
 	 text-align: center;
 	 padding: 15px;
 }
+.Loans p {
+    margin: 40px auto;
+    color: #777;
+    text-align: left;
+    max-width: 1200px;
+}
 /* Testimonials */
  .testimonials {
 	 display: flex;
