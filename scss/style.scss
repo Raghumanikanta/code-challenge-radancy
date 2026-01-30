@@ -1,4 +1,11 @@
-/* Base */
+$mobile: 768px;
+
+@mixin respond-mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -11,58 +18,100 @@ body {
   padding: 0 20px;
 }
 
-/* Header */
 .site-header {
   padding: 16px 0;
   background: #fff;
+}
 
-  .logo {
-    max-width: 160px;
+.container-logo {
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include respond-mobile {
+    justify-content: center;
   }
 }
 
-/* Hero */
+.logo {
+  max-width: 310px;
+  height: 90px;
+}
+
 .hero {
   position: relative;
   display: flex;
   height: 420px;
   overflow: hidden;
 
-  &__image {
-    width: 60%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
-  &__overlay {
-    width: 40%;
-    background: #2f7d6a;
-    transform: skewX(-12deg);
-    margin-left: -80px;
+  @include respond-mobile {
+    flex-direction: column;
+    height: auto;
   }
 }
 
-/* Intro */
+.hero__image {
+  width: 60%;
+
+  img {
+    width: 102%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include respond-mobile {
+    width: 100%;
+  }
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56%;
+  height: 100%;
+  background: #2f7d6a;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+
+  @include respond-mobile {
+    position: relative;
+    width: 100%;
+    clip-path: none;
+  }
+}
+
 .intro {
   text-align: center;
   padding: 50px 0;
 
-  h2 {
-    color: #1f9c6b;
-  }
-
   p {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 1200px;
+    margin: 40px auto;
     color: #777;
+    text-align: left;
   }
 }
 
-/* Button */
+.intro h2,
+.intro-title h2 {
+  position: relative;
+  color: #0a8f5b;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 24px;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #0a8f5b;
+    margin: 12px auto 0;
+  }
+}
+
 .btn-primary {
   display: inline-block;
   background: #f47b20;
@@ -72,12 +121,20 @@ body {
   border-radius: 3px;
 }
 
-/* Features */
 .features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 64px;
   padding: 50px 0;
+
+  @include respond-mobile {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.feature {
+  position: relative;
 
   h3 {
     color: #1f9c6b;
@@ -92,9 +149,46 @@ body {
     font-size: 14px;
     text-decoration: none;
   }
+
+  &:nth-child(2),
+  &:nth-child(4) {
+    padding-left: 40px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      background: #dcdcdc;
+    }
+  }
+
+  @include respond-mobile {
+    padding: 24px 0;
+
+    &::before {
+      display: none;
+    }
+
+    &:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: #dcdcdc;
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      padding-left: 0;
+    }
+  }
 }
 
-/* Highlight */
 .highlight {
   background: #1f9c6b;
   color: #fff;
@@ -102,20 +196,23 @@ body {
   padding: 15px;
 }
 
-/* Testimonials */
 .testimonials {
   display: flex;
   justify-content: space-between;
   padding: 50px 0;
+
+  @include respond-mobile {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .testimonial {
     width: 30%;
     text-align: center;
 
     img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
+      width: 200px;
+      height: 160px;
     }
 
     p {
@@ -127,48 +224,29 @@ body {
       font-size: 14px;
       color: #1f9c6b;
     }
-  }
-}
 
-/* Footer */
-.site-footer {
-  background: #f2f2f2;
-  padding: 20px 0;
-  font-size: 12px;
-  color: #777;
-}
-
-/* ========== MOBILE ========== */
-@media (max-width: 768px) {
-
-  .hero {
-    flex-direction: column;
-    height: auto;
-
-    &__image,
-    &__overlay {
-      width: 100%;
-      transform: none;
-      margin-left: 0;
-    }
-
-    &__overlay {
-      height: 180px;
-    }
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .testimonials {
-    flex-direction: column;
-    align-items: center;
-
-    .testimonial {
+    @include respond-mobile {
       width: 100%;
       margin-bottom: 40px;
     }
   }
+}
+
+.footer {
+  background: #fff;
+  font-size: 12px;
+  color: #555;
+  padding-bottom: 20px;
+}
+
+.footer-top-line {
+  height: 2px;
+  background: #2bb673;
+  margin-bottom: 16px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
 }
