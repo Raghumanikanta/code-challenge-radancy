@@ -282,6 +282,9 @@
 		 transform: none;
 		 margin-left: 0;
 	}
+	 .hero__overlay {
+		 height: auto;
+	}
 	 .features {
 		 grid-template-columns: 1fr;
 		 gap: 30px;
