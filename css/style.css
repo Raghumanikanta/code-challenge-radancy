@@ -89,9 +89,10 @@
   margin: 12px auto 0;
 }
  .intro p {
-	 max-width: 800px;
-	 margin: 20px auto;
+	 max-width: 1200px;
+	 margin: 40px auto;
 	 color: #777;
+	 text-align: left;
 }
 /* Button */
  .btn-primary {
