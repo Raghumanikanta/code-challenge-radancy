@@ -15,7 +15,21 @@
 	 background: #fff;
 }
  .site-header .logo {
-	 max-width: 160px;
+	max-width: 310px;
+	height: 90px;
+}
+.container-logo {
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+/* Mobile */
+@media (max-width: 768px) {
+  .container-logo {
+    justify-content: center;
+  }
 }
 /* Hero */
  .hero {
