@@ -159,8 +159,7 @@
   .feature:nth-child(2), .feature:nth-child(4) {
     padding-left: 0px;
 }
-
-
+}
 /* Highlight */
  .highlight {
 	 background: #1f9c6b;
