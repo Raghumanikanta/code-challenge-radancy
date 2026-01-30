@@ -184,9 +184,8 @@
 	 text-align: center;
 }
  .testimonials .testimonial img {
-	 width: 90px;
-	 height: 90px;
-	 border-radius: 50%;
+    width: 200px;
+    height: 160px;
 }
  .testimonials .testimonial p {
 	 font-style: italic;
